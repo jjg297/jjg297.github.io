@@ -15,6 +15,9 @@ spring:
   profiles:
     active: development
   security:
+    user:
+      name: user
+      password: pass
     oauth2:
       client:
 #        registration:
