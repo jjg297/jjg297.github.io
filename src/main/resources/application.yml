@@ -1,29 +1,11 @@
-#security:
-#  oauth2:
-#    client:
-#      clientId: <my-client-id>
-#      clientSecret: <my-secret>
-#      accessTokenUri: https://accounts.spotify.com/api/token
-#      userAuthorizationUri: https://accounts.spotify.com/authorize
-#      tokenName: oauth_token
-#      authenticationScheme: query
-#      clientAuthenticationScheme: form
-#      scope: user-read-private, user-read-email
-#    resource:
-#      userInfoUri: https://api.spotify.com/v1/me
 spring:
   profiles:
     active: development
   security:
+    oauth2:
+      client:
+        clientId: 726523ff10744c7492baf193993d378a
+        clientSecret: 889171cdbc764773828c5e970656ec51
     user:
       name: user
       password: pass
-    oauth2:
-      client:
-#        registration:
-#          spotify:
-#            provider: spotify
-        clientId: 726523ff10744c7492baf193993d378a
-        clientSecret: 889171cdbc764773828c5e970656ec51
-#        accessToken: https://accounts.spotify.com/api/token
-#        userAuthorizationUri: https://accounts.spotify.com/authorize

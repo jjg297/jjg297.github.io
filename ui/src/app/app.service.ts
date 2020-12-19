@@ -3,7 +3,7 @@ import {HttpClient} from "@angular/common/http";
 import {Observable} from "rxjs";
 import {HTTP_CORS_OPTIONS} from "../environments/environment";
 
-@Injectable()
+@Injectable({providedIn: 'root'})
 export class AppService {
 
   constructor(private http : HttpClient) { }
@@ -12,8 +12,12 @@ export class AppService {
     return this.http.get<string>("rest/songFromPlaylist/" + playlistId);
   }
 
-  authSpotify(): Observable<any> {
-    return this.http.get<any>("/rest/login/", HTTP_CORS_OPTIONS);
+  getFirstSpotifyResult(query: string): Observable<string> {
+    return this.http.put<string>("/rest/spotify/queryByName", query, HTTP_CORS_OPTIONS);
+  }
+
+  getTopYoutubeResult(query: string): Observable<string> {
+    return this.http.put<string>("/rest/youtube/queryByName", query, HTTP_CORS_OPTIONS);
   }
 
   getTopArtists(): Observable<any> {

@@ -10,8 +10,9 @@ import {FormBuilder, FormGroup} from "@angular/forms";
 export class AppComponent implements OnInit {
 
   playlistForm: FormGroup;
-  song: string;
-  authentication : any;
+  query : string = "";
+  youtubeResult: string = "";
+  spotifyResult: string = "";
   title = "";
 
   constructor(
@@ -27,21 +28,18 @@ export class AppComponent implements OnInit {
   ngOnInit() {
   }
 
-  onButtonClick(){
-    this.appService.getSongFromPlaylist(this.playlistForm.get("name").value).subscribe(res => {
-      this.song = res;
-    });
-  }
-
-  authSpotify(){
-    this.appService.authSpotify().subscribe(res => {
-      this.authentication = res;
+  getFirstSpotifyResult(query: string){
+    console.log("Running SPOTIFY query for: " + query);
+    this.appService.getFirstSpotifyResult(query).subscribe(res => {
+      this.spotifyResult = res;
       console.log(res);
     });
   }
 
-  getTopArtists(){
-    this.appService.getTopArtists().subscribe(res => {
+  getTopYoutubeResult(query: string){
+    console.log("Running YOUTUBE query for: " + query);
+    this.appService.getTopYoutubeResult(query).subscribe(res => {
+      this.youtubeResult = res;
       console.log(res);
     });
   }

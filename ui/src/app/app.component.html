@@ -45,66 +45,29 @@
 
   <input type="hidden" #selection>
 
+  <form [formGroup]="playlistForm">
+
+    <!-- Terminal -->
+    <div class="terminal">
+      <label class="terminalLabel" for="name">Enter Search Term:</label><input #terminalInput class="terminalInput" id="name" type="text" formControlName="name">
+      <!--        <pre *ngSwitchDefault>ng generate component xyz</pre>-->
+    </div>
+
+  </form>
+
   <div class="card-container">
-    <div class="card card-small" (click)="selection.value = 'component'" tabindex="0">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>New Component</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'material'" tabindex="0">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>Angular Material</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'pwa'" tabindex="0">
-        <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
-
-      <span>Add PWA Support</span>
-    </div>
-
-    <div class="card card-small" (click)="selection.value = 'dependency'" tabindex="0">
+    <div class="card card-small" (click)="getFirstSpotifyResult(terminalInput.value)" tabindex="0">
       <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
 
-      <span>Add Dependency</span>
+      <span>Spotify Test</span>
+    </div>
+
+    <div class="card card-small" (click)="getTopYoutubeResult(terminalInput.value)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+
+      <span>Youtube Test</span>
     </div>
   </div>
-
-    <form [formGroup]="playlistForm" (ngSubmit)="onButtonClick()">
-
-      <!-- Terminal -->
-      <div class="terminal">
-        <label class="terminalLabel" for="name">Enter Playlist Id</label><input class="terminalInput" id="name" type="text" formControlName="name">
-  <!--        <pre *ngSwitchDefault>ng generate component xyz</pre>-->
-      </div>
-
-      <button class="button" type="submit">Purchase</button>
-
-    </form>
-
-
-
-
-
-
-
-
-
-
-
-
-
-  <div class="container unauthenticated">
-    With Spotify: <a (click)="authSpotify()">Click here</a>
-  </div>
-
-
-
-
-
-
-
 
     <!-- Links -->
     <div class="card-container">
