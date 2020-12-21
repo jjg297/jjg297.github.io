@@ -14,6 +14,8 @@ export class AppComponent implements OnInit {
   youtubeResult: string = "";
   spotifyResult: string = "";
   title = "";
+  isSpotifyLoadComplete: boolean = false;
+  isYoutubeLoadComplete: boolean = false;
 
   constructor(
     private appService: AppService,
@@ -33,6 +35,13 @@ export class AppComponent implements OnInit {
     this.appService.getFirstSpotifyResult(query).subscribe(res => {
       this.spotifyResult = res;
       console.log(res);
+    }, errorResponse => {
+      this.spotifyResult = errorResponse.error.text;
+      console.log(this.spotifyResult);
+      console.error(errorResponse);
+      this.isSpotifyLoadComplete = true;
+    }, () => {
+      this.isSpotifyLoadComplete = true;
     });
   }
 
@@ -41,6 +50,12 @@ export class AppComponent implements OnInit {
     this.appService.getTopYoutubeResult(query).subscribe(res => {
       this.youtubeResult = res;
       console.log(res);
+    }, errorResponse => {
+      this.youtubeResult = errorResponse.error.text;
+      console.error(this.youtubeResult);
+      this.isYoutubeLoadComplete = true;
+    }, () => {
+      this.isYoutubeLoadComplete = true;
     });
   }
 }

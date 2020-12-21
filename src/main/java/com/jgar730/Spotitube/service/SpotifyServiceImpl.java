@@ -19,12 +19,13 @@ import java.io.IOException;
 @Component
 public class SpotifyServiceImpl implements SpotifyService{
 
+    public static final String SPOTIFY_EURL = "spotify";
     // TODO Fix these values not coming in for some reason
 //    @Value("${spring.security.oauth2.client.clientId}")
-    private String clientId = "726523ff10744c7492baf193993d378a";
+    private final String clientId = "726523ff10744c7492baf193993d378a";
 
 //    @Value("${spring.security.oauth2.client.clientSecret}")
-    private String clientSecret = "889171cdbc764773828c5e970656ec51";
+    private final String clientSecret = "889171cdbc764773828c5e970656ec51";
 
     private SpotifyApi spotifyApi = new SpotifyApi.Builder()
             .setClientId(clientId)
@@ -48,9 +49,8 @@ public class SpotifyServiceImpl implements SpotifyService{
 
         final SearchTracksRequest searchTrackRequest = spotifyApi.searchTracks(query).limit(5).build();
         final Paging<Track> trackPaging = searchTrackRequest.execute();
-        String returnUrl = trackPaging.getItems()[0].getUri();
-        logger.info(returnUrl);
-        return returnUrl.split("spotify:track:")[1];
+        String returnUrl = trackPaging.getItems()[0].getExternalUrls().getExternalUrls().get(SPOTIFY_EURL);
+        return returnUrl;
 
     }
 

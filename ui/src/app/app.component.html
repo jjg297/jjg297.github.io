@@ -68,6 +68,10 @@
       <span>Youtube Test</span>
     </div>
   </div>
+  <div>
+    <a href="{{this.spotifyResult}}" *ngIf="this.isSpotifyLoadComplete">Here's your song for the search: {{terminalInput.value}} on Spotify!</a>
+    <a href="{{this.youtubeResult}}" *ngIf="this.isYoutubeLoadComplete">Here's your song for the search: {{terminalInput.value}} on Youtube!</a>
+  </div>
 
     <!-- Links -->
     <div class="card-container">

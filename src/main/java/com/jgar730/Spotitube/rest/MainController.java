@@ -56,15 +56,19 @@ public class MainController {
     @Autowired
     private SpotifyService spotifyService;
 
-    // TODO Fix these returns with a JsonSerializer/Deserializer as angular frontend expects a json.parse, for some reason?
+    // TODO Fix exception, Angular expects a json.parse for some reason?
     @RequestMapping("/spotify/queryByName")
     public String getFirstSpotifyResult(@RequestBody String query) throws ParseException, SpotifyWebApiException, IOException {
-        return this.spotifyService.getFirstSpotifyResultUrlByQuery(query);
+        String returnStr = this.spotifyService.getFirstSpotifyResultUrlByQuery(query);
+        logger.info(returnStr);
+        return returnStr;
     }
 
     @RequestMapping("/youtube/queryByName")
     public String getTopYoutubeResult(@RequestBody String query) throws IOException {
-        return "https://www.youtube.com/watch?v="+youtubeService.getTopYoutubeResult(query);
+        String vidUrl = "https://www.youtube.com/watch?v="+youtubeService.getTopYoutubeResult(query);
+        logger.info(vidUrl);
+        return vidUrl;
     }
 
 }
