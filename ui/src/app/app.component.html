@@ -72,7 +72,8 @@
     <a href="{{this.spotifyResult}}" *ngIf="this.isSpotifyLoadComplete">Here's your song for the search: {{terminalInput.value}} on Spotify!</a>
     <a href="{{this.youtubeResult}}" *ngIf="this.isYoutubeLoadComplete">Here's your song for the search: {{terminalInput.value}} on Youtube!</a>
   </div>
-
+<div><iframe width="560" height="315" [src]="spotify_url" *ngIf="this.isSpotifyLoadComplete" frameborder="0" allowfullscreen></iframe></div>
+<div><iframe width="560" height="315" [src]="youtube_url" *ngIf="this.isYoutubeLoadComplete" frameborder="0" allowfullscreen></iframe></div>
     <!-- Links -->
     <div class="card-container">
       <a class="circle-link" title="Animations" href="https://angular.io/guide/animations" target="_blank" rel="noopener">

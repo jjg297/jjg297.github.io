@@ -66,7 +66,7 @@ public class MainController {
 
     @RequestMapping("/youtube/queryByName")
     public String getTopYoutubeResult(@RequestBody String query) throws IOException {
-        String vidUrl = "https://www.youtube.com/watch?v="+youtubeService.getTopYoutubeResult(query);
+        String vidUrl = youtubeService.getTopYoutubeResult(query);
         logger.info(vidUrl);
         return vidUrl;
     }
