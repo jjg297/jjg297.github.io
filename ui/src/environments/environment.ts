@@ -2,19 +2,9 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
-import {HttpHeaders} from "@angular/common/http";
 
 export const environment = {
   production: false
-};
-
-export const HTTP_CORS_OPTIONS = {
-  headers: new HttpHeaders({
-    'Access-Control-Allow-Credentials' : 'true',
-    'Access-Control-Allow-Origin': '*',
-    'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
-    'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
-  })
 };
 
 /*

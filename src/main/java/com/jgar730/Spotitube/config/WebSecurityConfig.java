@@ -10,11 +10,23 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Override
     protected void configure(HttpSecurity http) throws Exception {
+        // Commented this part out as it seemed to cause a login window to pop-up, which we dont want
+//        http.cors().disable()
+//                .authorizeRequests()
+//                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers(HttpMethod.PUT, "/**").permitAll()
+//                .anyRequest()
+//                .fullyAuthenticated()
+//                .and()
+//                .httpBasic()
+//                .and()
+//                .csrf().disable();
+
         http.cors().disable()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll().antMatchers(HttpMethod.PUT, "/**").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/**").permitAll()
+                .antMatchers(HttpMethod.PUT, "/**").permitAll()
                 .anyRequest()
-                .fullyAuthenticated()
+                .permitAll()
                 .and()
                 .httpBasic()
                 .and()

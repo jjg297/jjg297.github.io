@@ -64,6 +64,11 @@ public class MainController {
         return returnStr;
     }
 
+    @RequestMapping("/test")
+    public String test(){
+        return "Connected successfully!";
+    }
+
     @RequestMapping("/youtube/queryByName")
     public String getTopYoutubeResult(@RequestBody String query) throws IOException {
         String vidUrl = youtubeService.getTopYoutubeResult(query);

@@ -1,10 +1,19 @@
 import { Injectable } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
+import {HttpClient, HttpHeaders} from "@angular/common/http";
 import {Observable} from "rxjs";
-import {HTTP_CORS_OPTIONS} from "../environments/environment";
 
 @Injectable({providedIn: 'root'})
 export class AppService {
+
+  HTTP_CORS_OPTIONS = {
+    headers : new HttpHeaders({
+      'Access-Control-Allow-Credentials' : 'true',
+      'Access-Control-Allow-Origin': '*',
+      'Access-Control-Allow-Methods': 'GET, POST, PATCH, DELETE, PUT, OPTIONS',
+      'Access-Control-Allow-Headers': 'Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With'
+    })
+  }
+
 
   constructor(private http : HttpClient) { }
 
@@ -13,17 +22,17 @@ export class AppService {
   }
 
   getFirstSpotifyResult(query: string): Observable<string> {
-    return this.http.put<string>("/rest/spotify/queryByName", query, HTTP_CORS_OPTIONS);
+    return this.http.put<string>("/rest/spotify/queryByName", query, this.HTTP_CORS_OPTIONS);
   }
 
   getTopYoutubeResult(query: string): Observable<string> {
-    return this.http.put<string>("/rest/youtube/queryByName", query, HTTP_CORS_OPTIONS);
+    return this.http.put<string>("/rest/youtube/queryByName", query, this.HTTP_CORS_OPTIONS);
   }
 
   getTopArtists(): Observable<any> {
     // return this.http.get<any>("/oauth2/authorization/github");
 
-    return this.http.get<any>("http://localhost:8080/rest/user-top-artists", HTTP_CORS_OPTIONS);
+    return this.http.get<any>("http://localhost:8080/rest/user-top-artists", this.HTTP_CORS_OPTIONS);
   }
 
 }
